@@ -1,0 +1,35 @@
+﻿/* Page-specific styling */
+
+#settings-button {
+    background-image: url("../../Images/Settings.png");
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+}
+
+.notice {
+    padding: 10px 10px 25px 10px;
+    border: 2px solid black;
+}
+
+
+/* Formatting for the sample visualization */
+
+.visualization {
+    padding-bottom: 7px;
+    padding-right: 10px;
+}
+
+    .visualization td {
+        padding-bottom: 5px;
+    }
+
+    .visualization .bar {
+        background: darkgreen;
+        color: white;
+        text-align: center;
+        display: inline-block;
+    }

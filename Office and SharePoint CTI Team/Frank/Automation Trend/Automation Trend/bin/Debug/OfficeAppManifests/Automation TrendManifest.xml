@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) Microsoft Devdiv Office and SharePoint.  All rights reserved.
+-->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ContentApp">
+  <Id>48623fcc-90af-4614-a261-9620cb7c79fd</Id>
+  <Version>1.0.0.1</Version>
+  <ProviderName>Devdiv CTI team</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Automation Trend" />
+  <Description DefaultValue="Automation Trend app could make eaiser to collect automation result and send report"/>
+  <IconUrl DefaultValue="https://localhost:44308/Images/AppIcon.png" />
+  <SupportUrl DefaultValue="http://www.beyondsoft.com/" />
+  <Hosts>
+    <Host Name="Workbook" />
+    <Host Name="Database" />
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="TableBindings" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:44308/App/Home/Home.html" />
+    <RequestedWidth>400</RequestedWidth>
+    <RequestedHeight>400</RequestedHeight>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>

@@ -1,0 +1,20 @@
+﻿/* Page-specific styling */
+
+#content-main {
+    bottom: 50px; /* Same value as #content-footer's height */
+}
+
+    #content-main button {
+        margin-top: 10px;
+        width: 200px;
+    }
+
+#content-footer {
+    background-color: #cecece;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Fixed footer height */
+    overflow: hidden; /* Disable scrollbars for footer */
+}

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SharePointSiteUrl>https://vscptls2.sharepoint.com/sites/Developer/</SharePointSiteUrl>
+    <GeneratedFeatureId>4113e364-4c4b-4a58-9db5-52858d7606d4</GeneratedFeatureId>
+    <GeneratedPackageId>6cd8dbf8-5738-4cc3-8488-14d9b9ab9d78</GeneratedPackageId>
+    <GeneratedModuleId>{5e6e1ea0-e0bb-4128-afaf-cda70209dddc}</GeneratedModuleId>
+    <GeneratedListId>{05b57858-89c8-49b2-856b-1b2dc9e67725}</GeneratedListId>
+    <GeneratedProductId>{052ef993-d9f8-4264-8804-b18f80711b06}</GeneratedProductId>
+    <GeneratedAppVersion>1.0.0.0</GeneratedAppVersion>
+    <GeneratedClientSecret>wfiHlgDS9pA4jYAfrPjSDdfxbafMshuGEArVywdYedg=</GeneratedClientSecret>
+  </PropertyGroup>
+</Project>

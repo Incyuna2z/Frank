@@ -1,0 +1,6 @@
+D:\Repos\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.dll.config
+D:\Repos\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.dll
+D:\Repos\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.pdb
+D:\Repos\Automation Trend\Automation TrendWeb\obj\Release\Automation TrendWeb.csprojResolveAssemblyReference.cache
+D:\Repos\Automation Trend\Automation TrendWeb\obj\Release\Automation TrendWeb.dll
+D:\Repos\Automation Trend\Automation TrendWeb\obj\Release\Automation TrendWeb.pdb
