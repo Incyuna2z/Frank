@@ -7,13 +7,13 @@
     visualization.generateSampleData = function () {
         var sampleHeaders = [['Build No', 'Initial', 'Final','RunID','OS','OS Lang','VS Lang','test query']];
         var sampleRows = [
-            ['30625.00', 77, 94.86,3200968,'Win Server 2008 R2 SP1','ENU','ENU',687858],
-            ['30707.00', 77.21, 86.0, 3220281, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
-            ['30714.00', 44.09, 87.80, 3232089, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
-            ['30721.00', 83.00, 92.89, 3242771, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
-            ['30722.00', 85.60, 93.00, 3249408, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
-            ['30723.00', 76.54, 93.00, 3382069, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
-            ['30804.00', 59.13, 92.46, 3439463, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
+            [30625.00, 77, 94.86,3200968,'Win Server 2008 R2 SP1','ENU','ENU',687858],
+            [30707.00, 77.21, 86.0, 3220281, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
+            [30714.00, 44.09, 87.80, 3232089, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
+            [30721.00, 83.00, 92.89, 3242771, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
+            [30722.00, 85.60, 93.00, 3249408, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
+            [30723.00, 76.54, 93.00, 3382069, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
+            [30804.00, 59.13, 92.46, 3439463, 'Win Server 2008 R2 SP1', 'ENU', 'ENU', 687858],
         ];
         return new Office.TableData(sampleRows, sampleHeaders);
     }
@@ -89,8 +89,22 @@
                 })()
             }]
         });
-
+        //Change the branch info,then hide the form
+        $("select").change(function () {
+            $("select :selected").each(function () {
+                var Ver = $(this).text();
+                var title = {
+                    text: Ver,
+                    style:{
+                        color: '#285abd',
+                        fontSize: '16px',
+                    },              
+                };
+                $("form").hide();
+                var chart = $("#container").highcharts();
+                chart.setTitle({ text: 'Automation Passing Rate' }, title);
+            })
+        })
     };
-
-        return visualization;
+            return visualization;
 })();

@@ -1,2 +1,2 @@
 bin\Debug\OfficeAppManifests\Automation TrendManifest.xml
-D:\Repos\Automation Trend\Automation Trend\bin\Debug\Automation Trend.debugapp
+D:\Repos\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\Automation Trend\Automation Trend\bin\Debug\Automation Trend.debugapp

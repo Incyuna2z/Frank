@@ -5,9 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <title></title>
     <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
     <script src="../../Scripts/highcharts.js" type="text/javascript"></script>
     <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
 
+    <script src="../../Scripts/jquery-ui-1.11.4.js" type="text/javascript"></script>
+    <link href="../jquery-ui.css" rel="stylesheet" type="text/css" />
     <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
     <!-- <script src="../../Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
     <!-- <script src="../../Scripts/Office/1.1/office.js" type="text/javascript"></script>  -->
@@ -24,10 +27,23 @@
     <div id="content-main">
         <div class="padding">
             <a id="settings-button" href="../DataBinding/DataBinding.html"></a>
-            <br />
-            <br/>
+            <form>
+                <fieldset>
+                    <label for="version-select">Select a branch</label>
+                    <select name="version-select" id="version-select">
+                        <option>VSUPreRel</option>
+                        <option>Rel</option>
+                        <option>ODTMain</option>
+                        <option selected="selected">D14Rel</option>
+                        <option>Design</option>
+                        <option>DP</option>
+                        <option>CBA14Rel</option>
+                        <option>CBA\Master</option>
+                    </select>
+                </fieldset>
+            </form>
             <div id="container" style="min-width: 300px; height: 450px; margin: 0 auto"></div>
-            </div>
+        </div>
     </div>
 </body>
 </html>

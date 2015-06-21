@@ -4,7 +4,7 @@ Copyright (c) Microsoft Devdiv Office and SharePoint.  All rights reserved.
 -->
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ContentApp">
   <Id>48623fcc-90af-4614-a261-9620cb7c79fd</Id>
-  <Version>1.0.0.1</Version>
+  <Version>1.0.0.2</Version>
   <ProviderName>Devdiv CTI team</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Automation Trend" />
