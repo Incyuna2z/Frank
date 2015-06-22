@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
      Name="Automation Trend"
-     ProductID="{4eef55e4-bf3e-419f-ad76-f9663bb9bb69}"
+     ProductID="{a9efa7cf-765c-4851-bb1a-223e5dcc5bd8}"
      Version="1.0.0.0"
      SharePointMinVersion="15.0.0.0"
 >
