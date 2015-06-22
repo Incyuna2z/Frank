@@ -1,4 +1,5 @@
-﻿var visualization = (function () {
+﻿var charttemp ={};
+var visualization = (function () {
     'use strict';
 
     var visualization = {};
@@ -21,7 +22,6 @@
     visualization.display = function ($element, data, errorHandler) {
 
         var build = new Array();
-        var chart;
 
         if ((data.rows.length < 1) || (data.rows[0].length < 2)) {
             errorHandler('The data range must contain at least 1 row and at least 2 columns.');
@@ -32,7 +32,7 @@
             build.push(data.rows[i][0]);
         }
 
-        $('#container').highcharts({
+        charttemp = {
             title: {
                 text: 'Automation Passing Rate',
                 x: -20
@@ -73,7 +73,7 @@
                     var initpr;
                     for (initpr = 0; initpr < data.rows.length; initpr++) {
                         init.push(data.rows[initpr][1]);
-                    }   
+                    }
                     return init;
                 })()
             }, {
@@ -88,7 +88,10 @@
                     return final;
                 })()
             }]
-        });
+        }
+
+        $('#container').highcharts(charttemp);
+
         //Change the branch info,then hide the form
         $("select").change(function () {
             $("select :selected").each(function () {

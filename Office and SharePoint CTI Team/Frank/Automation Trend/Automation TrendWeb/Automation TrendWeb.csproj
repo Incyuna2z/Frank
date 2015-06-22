@@ -76,6 +76,9 @@
     <Content Include="App\Home\Home.html" />
     <Content Include="App\Home\Home.js" />
     <Content Include="App\jquery-ui.css" />
+    <Content Include="App\SettingPane\Settingpane.html" />
+    <Content Include="App\SettingPane\Settingpane.js" />
+    <Content Include="App\themes\theme.js" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -109,6 +112,12 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Images\dark-unica.png" />
+    <Content Include="Images\gray.png" />
+    <Content Include="Images\dark-green.png" />
+    <Content Include="Images\dark-blue.png" />
+    <Content Include="Images\grid-light.png" />
+    <Content Include="Images\grid.png" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\Visualization.js" />
@@ -379,14 +388,6 @@
     <Content Include="Scripts\Office\metadata\endpoints.xml" />
     <Content Include="Scripts\Office\metadata\features.xml" />
     <Content Include="Scripts\Office\MicrosoftAjax.js" />
-    <Content Include="Scripts\themes\dark-blue.js" />
-    <Content Include="Scripts\themes\dark-green.js" />
-    <Content Include="Scripts\themes\dark-unica.js" />
-    <Content Include="Scripts\themes\gray.js" />
-    <Content Include="Scripts\themes\grid-light.js" />
-    <Content Include="Scripts\themes\grid.js" />
-    <Content Include="Scripts\themes\sand-signika.js" />
-    <Content Include="Scripts\themes\skies.js" />
     <Content Include="Scripts\_officeintellisense.js" />
     <Content Include="Web.config" />
   </ItemGroup>
