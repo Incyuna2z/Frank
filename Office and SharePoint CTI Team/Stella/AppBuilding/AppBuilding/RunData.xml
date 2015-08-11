@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--This is a configuration file save all Run Data columns show/hide options-->
+<Runs>
+  <Run Name="">
+    <BuildNum Name="BuildNum" HeadText="Build" />
+    <InitialPassingRate Name="InitialPassingRate" HeadText="Initial PR" />
+    <PassingRate Name="PassingRate" HeadText="Final PR" />
+    <RunID Name="RunID" HeadText="Run ID" />
+    <OS Name="OS" HeadText="OS"/>
+    <OSLang name="OS Lang" headtest="OS Lang"/>
+    <VSLang Name="VS Lang" HeadText="VS Lang" />
+    <TestQuery Name="Test Query" HeadTest="Test Query"/>
+  </Run>
+</Runs>
