@@ -1,0 +1,6 @@
+C:\Users\v-stfa\Desktop\AppBuilding\AppBuilding\bin\Debug\AppBuilding.exe.config
+C:\Users\v-stfa\Desktop\AppBuilding\AppBuilding\obj\Debug\AppBuilding.exe
+C:\Users\v-stfa\Desktop\AppBuilding\AppBuilding\obj\Debug\AppBuilding.pdb
+C:\Users\v-stfa\Desktop\AppBuilding\AppBuilding\obj\Debug\CollectData.csprojResolveAssemblyReference.cache
+C:\Users\v-stfa\Desktop\AppBuilding\AppBuilding\bin\Debug\AppBuilding.exe
+C:\Users\v-stfa\Desktop\AppBuilding\AppBuilding\bin\Debug\AppBuilding.pdb
