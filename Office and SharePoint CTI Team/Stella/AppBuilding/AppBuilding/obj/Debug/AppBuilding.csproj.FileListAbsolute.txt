@@ -1,0 +1,12 @@
+c:\users\v-stfa\documents\visual studio 2015\Projects\AppBuilding\AppBuilding\bin\Debug\AppBuilding.exe.config
+c:\users\v-stfa\documents\visual studio 2015\Projects\AppBuilding\AppBuilding\bin\Debug\AppBuilding.exe
+c:\users\v-stfa\documents\visual studio 2015\Projects\AppBuilding\AppBuilding\bin\Debug\AppBuilding.pdb
+c:\users\v-stfa\documents\visual studio 2015\Projects\AppBuilding\AppBuilding\obj\Debug\AppBuilding.csprojResolveAssemblyReference.cache
+c:\users\v-stfa\documents\visual studio 2015\Projects\AppBuilding\AppBuilding\obj\Debug\AppBuilding.exe
+c:\users\v-stfa\documents\visual studio 2015\Projects\AppBuilding\AppBuilding\obj\Debug\AppBuilding.pdb
+C:\Users\vslab1\Desktop\AppBuilding\AppBuilding\bin\Debug\AppBuilding.exe.config
+C:\Users\vslab1\Desktop\AppBuilding\AppBuilding\obj\Debug\AppBuilding.exe
+C:\Users\vslab1\Desktop\AppBuilding\AppBuilding\obj\Debug\AppBuilding.pdb
+C:\Users\vslab1\Desktop\AppBuilding\AppBuilding\bin\Debug\AppBuilding.exe
+C:\Users\vslab1\Desktop\AppBuilding\AppBuilding\bin\Debug\AppBuilding.pdb
+C:\Users\vslab1\Desktop\AppBuilding\AppBuilding\obj\Debug\AppBuilding.csprojResolveAssemblyReference.cache

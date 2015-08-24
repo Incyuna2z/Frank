@@ -1,0 +1,5 @@
+C:\Users\v-stfa\Documents\GitHub\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\How to create XML with C#\AutomationElementXMLFile\AutomationElementXMLFile\bin\Debug\AutomationElementXMLFile.exe.config
+C:\Users\v-stfa\Documents\GitHub\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\How to create XML with C#\AutomationElementXMLFile\AutomationElementXMLFile\bin\Debug\AutomationElementXMLFile.exe
+C:\Users\v-stfa\Documents\GitHub\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\How to create XML with C#\AutomationElementXMLFile\AutomationElementXMLFile\bin\Debug\AutomationElementXMLFile.pdb
+C:\Users\v-stfa\Documents\GitHub\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\How to create XML with C#\AutomationElementXMLFile\AutomationElementXMLFile\obj\Debug\AutomationElementXMLFile.exe
+C:\Users\v-stfa\Documents\GitHub\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\How to create XML with C#\AutomationElementXMLFile\AutomationElementXMLFile\obj\Debug\AutomationElementXMLFile.pdb
