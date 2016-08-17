@@ -1,0 +1,9 @@
+c:\users\v-stfa\documents\visual studio 2015\Projects\CollectData\CollectData\bin\Debug\CollectData.exe.config
+c:\users\v-stfa\documents\visual studio 2015\Projects\CollectData\CollectData\obj\Debug\CollectData.csprojResolveAssemblyReference.cache
+c:\users\v-stfa\documents\visual studio 2015\Projects\CollectData\CollectData\bin\Debug\CollectData.exe
+c:\users\v-stfa\documents\visual studio 2015\Projects\CollectData\CollectData\bin\Debug\CollectData.pdb
+c:\users\v-stfa\documents\visual studio 2015\Projects\CollectData\CollectData\bin\Debug\DefinitionInterpreter.dll
+c:\users\v-stfa\documents\visual studio 2015\Projects\CollectData\CollectData\bin\Debug\MadDogObjects.dll
+c:\users\v-stfa\documents\visual studio 2015\Projects\CollectData\CollectData\bin\Debug\MadDogObjects.Forms.dll
+c:\users\v-stfa\documents\visual studio 2015\Projects\CollectData\CollectData\obj\Debug\CollectData.exe
+c:\users\v-stfa\documents\visual studio 2015\Projects\CollectData\CollectData\obj\Debug\CollectData.pdb
