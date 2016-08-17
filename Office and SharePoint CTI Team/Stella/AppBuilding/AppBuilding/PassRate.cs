@@ -43,7 +43,6 @@ namespace AppBuilding
         {
             _runID = runID;
 
-            // try to cache run result table if run id is valid.
             try
             {
                 this.RunID = runID;
