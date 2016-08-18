@@ -7,18 +7,17 @@ using Xunit;
 
 namespace UnitTesting
 {
-    class DeviceClassV2
+    class DeviceClassV3
     {
         private string name = "";
-        private string status = "";
+        private StatusType status = StatusType.None;
 
-        public DeviceClassV2(string Name)
+        public DeviceClassV3(string Name)
         {
             name = Name;
-            status = String.Empty;
         }
 
-        public void set_status(string Status)
+        public void set_status(StatusType Status)
         {
             if (IsStatusValid(Status))
             {
@@ -28,12 +27,12 @@ namespace UnitTesting
             {
                 Exception e = new Exception("You enter a invalid value, Status just could be 'On' or 'Off'");
                 throw e;
-            }                     
+            }
         }
 
         public string read_status()
         {
-            return status;
+            return status.ToString();
         }
 
         public string read_name()
@@ -41,23 +40,24 @@ namespace UnitTesting
             return name;
         }
 
-        public bool IsStatusValid(string Status)
+        public bool IsStatusValid(StatusType Status)
         {
-            if(Status == "On" || Status == "Off")
+            if (Status == StatusType.Off || Status == StatusType.On)
                 return true;
             else
-            return false;
+                return false;
         }
     }
-    
-    public class testV2
+
+    public class testV3
     {
         [Fact]
-        public void testingMethod1()
+        public void testMethod1()
         {
-            DeviceClassV2 testClassV2 = new DeviceClassV2("Bedroom light");
-            testClassV2.set_status("On");
-            Assert.Equal("On", testClassV2.read_status());
+            DeviceClassV3 testClassV3 = new DeviceClassV3("Drawing Room Light");
+            testClassV3.set_status(StatusType.On);
+            Assert.Equal("On", testClassV3.read_status());
         }
     }
+
 }

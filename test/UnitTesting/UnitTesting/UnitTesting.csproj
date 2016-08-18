@@ -62,7 +62,9 @@
   <ItemGroup>
     <Compile Include="DeviceClassV1.cs" />
     <Compile Include="DeviceClassV2.cs" />
+    <Compile Include="DeviceClassV3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="V3DataType\StatusType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
