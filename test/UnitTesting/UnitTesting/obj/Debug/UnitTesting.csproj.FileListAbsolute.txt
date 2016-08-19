@@ -17,3 +17,22 @@ c:\Users\Lenovo\Documents\Visual Studio 2015\Projects\UnitTesting\UnitTesting\bi
 c:\Users\Lenovo\Documents\Visual Studio 2015\Projects\UnitTesting\UnitTesting\bin\Debug\UnitTesting.dll.CodeAnalysisLog.xml
 c:\Users\Lenovo\Documents\Visual Studio 2015\Projects\UnitTesting\UnitTesting\bin\Debug\UnitTesting.dll.lastcodeanalysissucceeded
 c:\Users\Lenovo\Documents\Visual Studio 2015\Projects\UnitTesting\UnitTesting\obj\Debug\UnitTesting.csprojResolveAssemblyReference.cache
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\obj\Debug\UnitTesting.csprojResolveAssemblyReference.cache
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.abstractions.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.runner.visualstudio.testadapter.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.runner.utility.desktop.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\UnitTesting.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\UnitTesting.pdb
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\UnitTesting.dll.CodeAnalysisLog.xml
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\UnitTesting.dll.lastcodeanalysissucceeded
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.assert.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.core.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.execution.desktop.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.assert.pdb
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.assert.xml
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.core.pdb
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.core.xml
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.execution.desktop.pdb
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\bin\Debug\xunit.execution.desktop.xml
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\obj\Debug\UnitTesting.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\UnitTesting\UnitTesting\obj\Debug\UnitTesting.pdb
