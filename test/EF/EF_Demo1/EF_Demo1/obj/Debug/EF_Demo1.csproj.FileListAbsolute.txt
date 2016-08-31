@@ -1,0 +1,10 @@
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\bin\Debug\EF_Demo1.exe.config
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\bin\Debug\EF_Demo1.exe
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\bin\Debug\EF_Demo1.pdb
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\bin\Debug\EntityFramework.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\bin\Debug\EntityFramework.SqlServer.dll
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\bin\Debug\EntityFramework.xml
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\bin\Debug\EntityFramework.SqlServer.xml
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\obj\Debug\EF_Demo1.csprojResolveAssemblyReference.cache
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\obj\Debug\EF_Demo1.exe
+E:\Repos\BeyondsoftDevDivAppBuild\test\EF\EF_Demo1\EF_Demo1\obj\Debug\EF_Demo1.pdb

@@ -12,7 +12,8 @@ namespace EF_Demo1
     {
         static void Main(string[] args)
         {
-            QueryContacts();
+            //QueryContacts();
+            CRUD();
         }
 
         private static void QueryContacts()
@@ -204,6 +205,72 @@ namespace EF_Demo1
             }
 
             Console.ReadLine();
+        }
+
+        public static void CRUD()
+        {
+            //Sample 1: Querying a contact, and then save changes to database
+            //using (var context = new PROGRAMMINGEFDB1Entities())
+            //{
+            //    var contact = context.Contacts.First();
+            //    contact.FirstName = "Julia";
+            //    contact.AddDate = DateTime.Now;
+            //    context.SaveChanges();
+            //}
+
+
+            //Sample 2: Querying a contact, then save changes to database with lambda
+            //using (var context = new PROGRAMMINGEFDB1Entities())
+            //{
+            //    var contacts = context.Contacts.Include("Addresses").Where(c => c.FirstName == "Robert").ToList();
+            //    var contact = contacts[3];
+            //    contact.FirstName = "Bobby";
+            //    contact.AddDate = DateTime.Now;
+
+            //    context.SaveChanges();
+            //}
+
+            //Sample 3: Querying a contact, and saveing edtion
+            //using (var context = new PROGRAMMINGEFDB1Entities())
+            //{
+            //    //Anonymous type is read-only
+            //    var contacts = from a in context.Contacts where a.FirstName == "Julia" select a;
+            //    foreach (var contact in contacts)
+            //    {
+            //        contact.FirstName = "Frank";
+            //        contact.LastName = "Zhang";
+            //        contact.AddDate = DateTime.Now;
+            //    }
+            //    context.SaveChanges();
+            //}
+
+            //Sample 4: Querying a contact, insert a new address
+            using (var context = new PROGRAMMINGEFDB1Entities())
+            {
+                var contacts = from a in context.Contacts where a.FirstName == "Frank" && a.LastName =="Zhang" select a;
+
+                var newAddress = new Address();
+                newAddress.Street1 = "Qi Ye Street";
+                newAddress.City = "Xi'an";
+                newAddress.StateProvince = "ShaanXi";
+                newAddress.PostalCode = "710065";
+                newAddress.CountryRegion = "China";
+                newAddress.AddressType = "Business";
+                newAddress.ModifiedDate = DateTime.Now;
+
+                //Join the new address to the contact
+                newAddress.Contact = contacts.FirstOrDefault();
+                context.Addresses.Add(newAddress);
+                context.SaveChanges();
+
+                var addresses = from ad in context.Addresses where ad.City == "Xi'an" select ad;
+                
+                foreach(var address in addresses)
+                {
+                    Console.WriteLine("ContactID {0}", address.ContactID);
+                }
+                Console.ReadLine();         
+            }
         }
     }
 }
