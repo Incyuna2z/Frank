@@ -12,6 +12,8 @@ namespace EF_Demo1
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class PROGRAMMINGEFDB1Entities : DbContext
     {
@@ -28,5 +30,97 @@ namespace EF_Demo1
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<vOfficeAddress> vOfficeAddresses { get; set; }
+    
+        public virtual ObjectResult<AddressCountForContact_Result> AddressCountForContact(Nullable<int> contactID)
+        {
+            var contactIDParameter = contactID.HasValue ?
+                new ObjectParameter("contactID", contactID) :
+                new ObjectParameter("contactID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AddressCountForContact_Result>("AddressCountForContact", contactIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> AddressTypeCount(string addressType)
+        {
+            var addressTypeParameter = addressType != null ?
+                new ObjectParameter("AddressType", addressType) :
+                new ObjectParameter("AddressType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("AddressTypeCount", addressTypeParameter);
+        }
+    
+        public virtual ObjectResult<ContactsbyState_Result> ContactsbyState(string statecode)
+        {
+            var statecodeParameter = statecode != null ?
+                new ObjectParameter("statecode", statecode) :
+                new ObjectParameter("statecode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ContactsbyState_Result>("ContactsbyState", statecodeParameter);
+        }
+    
+        public virtual int DeleteContact(Nullable<int> contactid)
+        {
+            var contactidParameter = contactid.HasValue ?
+                new ObjectParameter("contactid", contactid) :
+                new ObjectParameter("contactid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteContact", contactidParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> InsertContact(string firstName, string lastName, string title)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("InsertContact", firstNameParameter, lastNameParameter, titleParameter);
+        }
+    
+        public virtual int UpdateContact(Nullable<int> contactID, string firstName, string lastName, string title)
+        {
+            var contactIDParameter = contactID.HasValue ?
+                new ObjectParameter("ContactID", contactID) :
+                new ObjectParameter("ContactID", typeof(int));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateContact", contactIDParameter, firstNameParameter, lastNameParameter, titleParameter);
+        }
+    
+        public virtual ObjectResult<Contact> GetContactsByState(string statecode)
+        {
+            var statecodeParameter = statecode != null ?
+                new ObjectParameter("statecode", statecode) :
+                new ObjectParameter("statecode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Contact>("GetContactsByState", statecodeParameter);
+        }
+    
+        public virtual ObjectResult<Contact> GetContactsByState(string statecode, MergeOption mergeOption)
+        {
+            var statecodeParameter = statecode != null ?
+                new ObjectParameter("statecode", statecode) :
+                new ObjectParameter("statecode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Contact>("GetContactsByState", mergeOption, statecodeParameter);
+        }
     }
 }

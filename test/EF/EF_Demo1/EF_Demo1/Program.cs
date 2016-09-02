@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Core;
 
 namespace EF_Demo1
 {
@@ -13,7 +13,8 @@ namespace EF_Demo1
         static void Main(string[] args)
         {
             //QueryContacts();
-            CRUD();
+            //CRUD();
+            MappingFunctionsToEntities();
         }
 
         private static void QueryContacts()
@@ -245,31 +246,74 @@ namespace EF_Demo1
             //}
 
             //Sample 4: Querying a contact, insert a new address
+            //using (var context = new PROGRAMMINGEFDB1Entities())
+            //{
+            //    var contacts = from a in context.Contacts where a.FirstName == "Frank" && a.LastName == "Zhang" select a;
+
+            //    var newAddress = new Address();
+            //    newAddress.Street1 = "Qi Ye Street";
+            //    newAddress.City = "Xi'an";
+            //    newAddress.StateProvince = "ShaanXi";
+            //    newAddress.PostalCode = "710065";
+            //    newAddress.CountryRegion = "China";
+            //    newAddress.AddressType = "Business";
+            //    newAddress.ModifiedDate = DateTime.Now;
+
+            //    //Join the new address to the contact
+            //    newAddress.Contact = contacts.FirstOrDefault();
+            //    context.Addresses.Add(newAddress);
+            //    context.SaveChanges();
+
+            //    var addresses = from ad in context.Addresses where ad.City == "Xi'an" select ad;
+
+            //    foreach (var address in addresses)
+            //    {
+            //        Console.WriteLine("ContactID {0}", address.ContactID);
+            //    }
+            //    Console.ReadLine();
+            //}
+
+            //Sample 5: Query an address, then delete it from database
+            //using (var context = new PROGRAMMINGEFDB1Entities())
+            //{
+            //    var addresses = context.Addresses.Where(a => a.City == "Xi'an").FirstOrDefault();
+
+            //    if(addresses!=null)
+            //    {
+            //        context.Addresses.Remove(addresses);
+            //    }
+            //    context.SaveChanges();               
+            //}
+
+            //Sample 6: Retrieving and deleting a contact entity with querying
+            //using (var context=new PROGRAMMINGEFDB1Entities())
+            //{
+            //    var address = new Address { addressID=2714,City = @"Xi'an" };
+            //    /*DbContext has methods called Entry and Entry<TEntity>, these methods get a DbEntityEntry for 
+            //    the given entity and provide access to the information about the entity and return a DbEntityEntry 
+            //    object able to perform the action on the entity. Now we can perform the delete operation on the context
+            //    by just changing the entity state to EntityState.Deleted by using primary key*/
+            //    context.Entry(address).State = EntityState.Deleted;
+            //    context.SaveChanges();
+            //} 
+        }
+
+        public static void MappingFunctionsToEntities()
+        {
             using (var context = new PROGRAMMINGEFDB1Entities())
             {
-                var contacts = from a in context.Contacts where a.FirstName == "Frank" && a.LastName =="Zhang" select a;
+                var contact = context.Contacts.Include("Addresses").Where(c => c.Addresses.Any()).FirstOrDefault();
 
-                var newAddress = new Address();
-                newAddress.Street1 = "Qi Ye Street";
-                newAddress.City = "Xi'an";
-                newAddress.StateProvince = "ShaanXi";
-                newAddress.PostalCode = "710065";
-                newAddress.CountryRegion = "China";
-                newAddress.AddressType = "Business";
-                newAddress.ModifiedDate = DateTime.Now;
+                contact.LastName = contact.LastName.Trim() + "_Test";
 
-                //Join the new address to the contact
-                newAddress.Contact = contacts.FirstOrDefault();
-                context.Addresses.Add(newAddress);
+                var address = contact.Addresses.FirstOrDefault();
+                address.Street2 = "Apartment 42";
+
+                /*When the SaveChanges method is called, the required updates are sent to the database. Because we mapped 
+                the functions to the Contact entity, the change to this contact object is manifested, and excutes the 
+                UpdateContact stored procedure. The Addresss entity has no mapped functons, therefore, object services
+                constructed this update command*/
                 context.SaveChanges();
-
-                var addresses = from ad in context.Addresses where ad.City == "Xi'an" select ad;
-                
-                foreach(var address in addresses)
-                {
-                    Console.WriteLine("ContactID {0}", address.ContactID);
-                }
-                Console.ReadLine();         
             }
         }
     }

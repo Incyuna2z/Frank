@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="addressID" />
@@ -69,6 +69,29 @@ warning 6002: The table/view 'PROGRAMMINGEFDB1.dbo.vOfficeAddresses' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddressCountForContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="contactID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddressTypeCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AddressType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ContactsbyState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="statecode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="contactid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="SampleModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
@@ -93,8 +116,7 @@ warning 6002: The table/view 'PROGRAMMINGEFDB1.dbo.vOfficeAddresses' does not ha
             <End Role="Address" EntitySet="Address" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SampleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -170,7 +192,45 @@ warning 6002: The table/view 'PROGRAMMINGEFDB1.dbo.vOfficeAddresses' does not ha
             <End Role="Contact" EntitySet="Contacts" />
             <End Role="Address" EntitySet="Addresses" />
           </AssociationSet>
+          <FunctionImport Name="AddressCountForContact" ReturnType="Collection(SampleModel.AddressCountForContact_Result)">
+            <Parameter Name="contactID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddressTypeCount" ReturnType="Collection(Int32)">
+            <Parameter Name="AddressType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ContactsbyState" ReturnType="Collection(SampleModel.ContactsbyState_Result)">
+            <Parameter Name="statecode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteContact">
+            <Parameter Name="contactid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertContact" ReturnType="Collection(Decimal)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateContact">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetContactsByState" EntitySet="Contacts" ReturnType="Collection(SampleModel.Contact)">
+            <Parameter Name="statecode" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="AddressCountForContact_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="102" />
+          <Property Type="Int32" Name="AddressCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ContactsbyState_Result">
+          <Property Type="Int32" Name="ContactID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="AddDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -204,6 +264,25 @@ warning 6002: The table/view 'PROGRAMMINGEFDB1.dbo.vOfficeAddresses' does not ha
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SampleModel.Contact">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="SampleModel.Store.InsertContact">
+                  <ScalarProperty Name="Title" ParameterName="Title" />
+                  <ScalarProperty Name="LastName" ParameterName="LastName" />
+                  <ScalarProperty Name="FirstName" ParameterName="FirstName" />
+                  <ResultBinding Name="ContactID" ColumnName="NewContactID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="SampleModel.Store.UpdateContact">
+                  <ScalarProperty Name="Title" ParameterName="Title" Version="Current" />
+                  <ScalarProperty Name="LastName" ParameterName="LastName" Version="Current" />
+                  <ScalarProperty Name="FirstName" ParameterName="FirstName" Version="Current" />
+                  <ScalarProperty Name="ContactID" ParameterName="ContactID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="SampleModel.Store.DeleteContact" >
+                  <ScalarProperty Name="ContactID" ParameterName="contactid" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vOfficeAddresses">
             <EntityTypeMapping TypeName="SampleModel.vOfficeAddress">
@@ -223,6 +302,31 @@ warning 6002: The table/view 'PROGRAMMINGEFDB1.dbo.vOfficeAddresses' does not ha
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddressCountForContact" FunctionName="SampleModel.Store.AddressCountForContact">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SampleModel.AddressCountForContact_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddressCount" ColumnName="AddressCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddressTypeCount" FunctionName="SampleModel.Store.AddressTypeCount" />
+          <FunctionImportMapping FunctionImportName="ContactsbyState" FunctionName="SampleModel.Store.ContactsbyState">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SampleModel.ContactsbyState_Result">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteContact" FunctionName="SampleModel.Store.DeleteContact" />
+          <FunctionImportMapping FunctionImportName="InsertContact" FunctionName="SampleModel.Store.InsertContact" />
+          <FunctionImportMapping FunctionImportName="UpdateContact" FunctionName="SampleModel.Store.UpdateContact" />
+          <FunctionImportMapping FunctionImportName="GetContactsByState" FunctionName="SampleModel.Store.ContactsbyState" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
