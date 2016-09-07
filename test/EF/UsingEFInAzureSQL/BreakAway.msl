@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BreakAwayModelStoreContainer" CdmEntityContainer="BreakAwayEntities">
+    <EntitySetMapping Name="Activities">
+      <EntityTypeMapping TypeName="BreakAwayModel.Activity">
+        <MappingFragment StoreEntitySet="Activities">
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+          <ScalarProperty Name="Activity1" ColumnName="Activity" />
+          <ScalarProperty Name="imagepath" ColumnName="imagepath" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="BreakAwayModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="addressID" ColumnName="addressID" />
+          <ScalarProperty Name="Street1" ColumnName="Street1" />
+          <ScalarProperty Name="Street2" ColumnName="Street2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+          <ScalarProperty Name="CountryRegion" ColumnName="CountryRegion" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="BreakAwayModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactPersonalInfoes">
+      <EntityTypeMapping TypeName="BreakAwayModel.ContactPersonalInfo">
+        <MappingFragment StoreEntitySet="ContactPersonalInfo">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="HeightInches" ColumnName="HeightInches" />
+          <ScalarProperty Name="WeightPounds" ColumnName="WeightPounds" />
+          <ScalarProperty Name="DietaryRestrictions" ColumnName="DietaryRestrictions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="BreakAwayModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+          <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
+          <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
+          <ScalarProperty Name="SecondaryDestination" ColumnName="SecondaryDestination" />
+          <ScalarProperty Name="PrimaryActivity" ColumnName="PrimaryActivity" />
+          <ScalarProperty Name="SecondaryActivity" ColumnName="SecondaryActivity" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerTypes">
+      <EntityTypeMapping TypeName="BreakAwayModel.CustomerType">
+        <MappingFragment StoreEntitySet="CustomerTypes">
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+          <ScalarProperty Name="CustomerType1" ColumnName="CustomerType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipments">
+      <EntityTypeMapping TypeName="BreakAwayModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="Equipment1" ColumnName="Equipment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="BreakAwayModel.Event">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="LodgingID" ColumnName="LodgingID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="TripCostUSD" ColumnName="TripCostUSD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="BreakAwayModel.Location">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lodgings">
+      <EntityTypeMapping TypeName="BreakAwayModel.Lodging">
+        <MappingFragment StoreEntitySet="Lodging">
+          <ScalarProperty Name="LodgingID" ColumnName="LodgingID" />
+          <ScalarProperty Name="LodgingName" ColumnName="LodgingName" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="Resort" ColumnName="Resort" />
+          <ScalarProperty Name="ResortChainOwner" ColumnName="ResortChainOwner" />
+          <ScalarProperty Name="LuxuryResort" ColumnName="LuxuryResort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OldReservations">
+      <EntityTypeMapping TypeName="BreakAwayModel.OldReservation">
+        <MappingFragment StoreEntitySet="OldReservations">
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="BreakAwayModel.Payment">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="BreakAwayModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservations">
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomersinPastYears">
+      <EntityTypeMapping TypeName="BreakAwayModel.CustomersinPastYear">
+        <MappingFragment StoreEntitySet="CustomersinPastYear">
+          <ScalarProperty Name="COntactID" ColumnName="COntactID" />
+          <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+          <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
+          <ScalarProperty Name="SecondaryDestination" ColumnName="SecondaryDestination" />
+          <ScalarProperty Name="PrimaryActivity" ColumnName="PrimaryActivity" />
+          <ScalarProperty Name="SecondaryActivity" ColumnName="SecondaryActivity" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vOfficeAddresses">
+      <EntityTypeMapping TypeName="BreakAwayModel.vOfficeAddress">
+        <MappingFragment StoreEntitySet="vOfficeAddresses">
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="addressID" ColumnName="addressID" />
+          <ScalarProperty Name="Street1" ColumnName="Street1" />
+          <ScalarProperty Name="Street2" ColumnName="Street2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+          <ScalarProperty Name="CountryRegion" ColumnName="CountryRegion" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vPaymentsforPeriods">
+      <EntityTypeMapping TypeName="BreakAwayModel.vPaymentsforPeriod">
+        <MappingFragment StoreEntitySet="vPaymentsforPeriod">
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="BreakAwayModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ActivityEquipment" TypeName="BreakAwayModel.ActivityEquipment" StoreEntitySet="ActivityEquipment">
+      <EndProperty Name="Activities">
+        <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+      </EndProperty>
+      <EndProperty Name="Equipment">
+        <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventActivities" TypeName="BreakAwayModel.EventActivities" StoreEntitySet="EventActivities">
+      <EndProperty Name="Activities">
+        <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+      </EndProperty>
+      <EndProperty Name="Events">
+        <ScalarProperty Name="EventID" ColumnName="EventID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="ActivitiesonaTrip" FunctionName="BreakAwayModel.Store.ActivitiesonaTrip">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BreakAwayModel.ActivitiesonaTrip_Result">
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+          <ScalarProperty Name="Activity" ColumnName="Activity" />
+          <ScalarProperty Name="imagepath" ColumnName="imagepath" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ContactsAddedinDateRange" FunctionName="BreakAwayModel.Store.ContactsAddedinDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BreakAwayModel.ContactsAddedinDateRange_Result">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CreateCustomerfromContact" FunctionName="BreakAwayModel.Store.CreateCustomerfromContact">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BreakAwayModel.CreateCustomerfromContact_Result">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+          <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
+          <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
+          <ScalarProperty Name="SecondaryDestination" ColumnName="SecondaryDestination" />
+          <ScalarProperty Name="PrimaryActivity" ColumnName="PrimaryActivity" />
+          <ScalarProperty Name="SecondaryActivity" ColumnName="SecondaryActivity" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="HeightInches" ColumnName="HeightInches" />
+          <ScalarProperty Name="WeightPounds" ColumnName="WeightPounds" />
+          <ScalarProperty Name="DietaryRestrictions" ColumnName="DietaryRestrictions" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CustomersWhoTravelledinDateRange" FunctionName="BreakAwayModel.Store.CustomersWhoTravelledinDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BreakAwayModel.CustomersWhoTravelledinDateRange_Result">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+          <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
+          <ScalarProperty Name="SecondaryDestination" ColumnName="SecondaryDestination" />
+          <ScalarProperty Name="PrimaryActivity" ColumnName="PrimaryActivity" />
+          <ScalarProperty Name="SecondaryActivity" ColumnName="SecondaryActivity" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="HeightInches" ColumnName="HeightInches" />
+          <ScalarProperty Name="WeightPounds" ColumnName="WeightPounds" />
+          <ScalarProperty Name="DietaryRestrictions" ColumnName="DietaryRestrictions" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteContact" FunctionName="BreakAwayModel.Store.DeleteContact" />
+    <FunctionImportMapping FunctionImportName="DeleteCustomer" FunctionName="BreakAwayModel.Store.DeleteCustomer" />
+    <FunctionImportMapping FunctionImportName="DeletePayment" FunctionName="BreakAwayModel.Store.DeletePayment" />
+    <FunctionImportMapping FunctionImportName="EventLocationsInDateRange" FunctionName="BreakAwayModel.Store.EventLocationsInDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BreakAwayModel.EventLocationsInDateRange_Result">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InsertContact" FunctionName="BreakAwayModel.Store.InsertContact" />
+    <FunctionImportMapping FunctionImportName="InsertCustomer" FunctionName="BreakAwayModel.Store.InsertCustomer" />
+    <FunctionImportMapping FunctionImportName="InsertPayment" FunctionName="BreakAwayModel.Store.InsertPayment" />
+    <FunctionImportMapping FunctionImportName="PaymentsforPeriod" FunctionName="BreakAwayModel.Store.PaymentsforPeriod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BreakAwayModel.PaymentsforPeriod_Result">
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TripLocationsInDateRange" FunctionName="BreakAwayModel.Store.TripLocationsInDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BreakAwayModel.TripLocationsInDateRange_Result">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TripSalesforDateRange" FunctionName="BreakAwayModel.Store.TripSalesforDateRange" />
+    <FunctionImportMapping FunctionImportName="UpdateContact" FunctionName="BreakAwayModel.Store.UpdateContact" />
+    <FunctionImportMapping FunctionImportName="UpdateCustomer" FunctionName="BreakAwayModel.Store.UpdateCustomer" />
+    <FunctionImportMapping FunctionImportName="UpdateCustomerWithMappings" FunctionName="BreakAwayModel.Store.UpdateCustomerWithMappings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BreakAwayModel.UpdateCustomerWithMappings_Result">
+          <ScalarProperty Name="CustRowVersion" ColumnName="CustRowVersion" />
+          <ScalarProperty Name="ContRowVersion" ColumnName="ContRowVersion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdatePayment" FunctionName="BreakAwayModel.Store.UpdatePayment" />
+  </EntityContainerMapping>
+</Mapping>

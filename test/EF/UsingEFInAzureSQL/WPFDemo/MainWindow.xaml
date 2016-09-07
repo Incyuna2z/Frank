@@ -1,0 +1,65 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDemo"
+        xmlns:UsingEFInAzureSQL="clr-namespace:UsingEFInAzureSQL;assembly=UsingEFInAzureSQL" x:Class="WPFDemo.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="395.076" Width="831.25" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="locationViewSource" d:DesignSource="{d:DesignInstance {x:Type UsingEFInAzureSQL:Location}, CreateList=True}"/>
+        <CollectionViewSource x:Key="lodgingViewSource" d:DesignSource="{d:DesignInstance {x:Type UsingEFInAzureSQL:Lodging}, CreateList=True}"/>
+        <CollectionViewSource x:Key="eventViewSource" d:DesignSource="{d:DesignInstance {x:Type UsingEFInAzureSQL:Event}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource locationViewSource}">
+        <ComboBox x:Name="locationComboBox" Height="23" HorizontalAlignment="Left" DisplayMemberPath="LocationName" ItemsSource="{Binding Source={StaticResource locationViewSource}}" Margin="89,238,0,0" SelectedValuePath="LocationID" SelectedValue="{Binding ElementName=eventListBox,Path=SelectedItem.LocationID}" VerticalAlignment="Top" Width="120">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel/>
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <ComboBox x:Name="lodgingComboBox" DisplayMemberPath="LodgingName" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" ItemsSource="{Binding Source={StaticResource lodgingViewSource}}" Margin="300,238,0,0" SelectedValuePath="LodgingID" SelectedValue="{Binding ElementName=eventListBox, Path=SelectedItem.LodgingID}">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel/>
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <ListBox x:Name="eventListBox"  ItemsSource="{Binding Source={StaticResource eventViewSource}}" Margin="73,32
+                 ,0,0" Height="136" Width="406" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="200" Text="{Binding Path=Location.LocationName}"/>
+                        <TextBlock Text="{Binding Path=StartDate,StringFormat=mm/dd/yyyy}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid x:Name="grid1" DataContext="{StaticResource eventViewSource}" HorizontalAlignment="Left" Margin="70,192,0,0" VerticalAlignment="Top" Width="170">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Start Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center"/>
+            <DatePicker x:Name="startDateDatePicker"  Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding Path=StartDate}" VerticalAlignment="Center" DataContext="{Binding Source={StaticResource eventViewSource}}"/>
+        </Grid>
+        <Grid x:Name="grid2" DataContext="{StaticResource eventViewSource}" HorizontalAlignment="Left" Margin="300,192,0,0" VerticalAlignment="Top" Width="170">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="End Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <DatePicker x:Name="endDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding Path=EndDate}" VerticalAlignment="Center" DataContext="{Binding Source={StaticResource eventViewSource}}"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,1793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BreakAwayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activities">
+          <Key>
+            <PropertyRef Name="ActivityID" />
+          </Key>
+          <Property Name="ActivityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Activity" Type="nvarchar" MaxLength="50" />
+          <Property Name="imagepath" Type="nvarchar" MaxLength="100" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivityEquipment">
+          <Key>
+            <PropertyRef Name="ActivityID" />
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="ActivityID" Type="int" Nullable="false" />
+          <Property Name="EquipmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="addressID" />
+          </Key>
+          <Property Name="addressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Street1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Street2" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactPersonalInfo">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="HeightInches" Type="int" />
+          <Property Name="WeightPounds" Type="int" />
+          <Property Name="DietaryRestrictions" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="CustomerTypeID" Type="int" Nullable="false" />
+          <Property Name="InitialDate" Type="datetime" />
+          <Property Name="PrimaryDesintation" Type="int" />
+          <Property Name="SecondaryDestination" Type="int" />
+          <Property Name="PrimaryActivity" Type="int" />
+          <Property Name="SecondaryActivity" Type="int" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerTypes">
+          <Key>
+            <PropertyRef Name="CustomerTypeID" />
+          </Key>
+          <Property Name="CustomerTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Equipment" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventActivities">
+          <Key>
+            <PropertyRef Name="EventID" />
+            <PropertyRef Name="ActivityID" />
+          </Key>
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="ActivityID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="LodgingID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="TripCostUSD" Type="int" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lodging">
+          <Key>
+            <PropertyRef Name="LodgingID" />
+          </Key>
+          <Property Name="LodgingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LodgingName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="Resort" Type="bit" Nullable="false" />
+          <Property Name="ResortChainOwner" Type="nvarchar" MaxLength="50" />
+          <Property Name="LuxuryResort" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OldReservations">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReservationDate" Type="datetime" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="ReservationID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservations">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReservationDate" Type="datetime" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BreakAway.dbo.CustomersinPastYear' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CustomersinPastYear">
+          <Key>
+            <PropertyRef Name="COntactID" />
+            <PropertyRef Name="CustomerTypeID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="AddDate" />
+            <PropertyRef Name="ModifiedDate" />
+          </Key>
+          <Property Name="COntactID" Type="int" Nullable="false" />
+          <Property Name="PrimaryDesintation" Type="int" />
+          <Property Name="CustomerTypeID" Type="int" Nullable="false" />
+          <Property Name="InitialDate" Type="datetime" />
+          <Property Name="SecondaryDestination" Type="int" />
+          <Property Name="PrimaryActivity" Type="int" />
+          <Property Name="SecondaryActivity" Type="int" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BreakAway.dbo.vOfficeAddresses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vOfficeAddresses">
+          <Key>
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="addressID" />
+            <PropertyRef Name="AddressType" />
+            <PropertyRef Name="ContactID" />
+            <PropertyRef Name="ModifiedDate" />
+          </Key>
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="addressID" Type="int" Nullable="false" />
+          <Property Name="Street1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Street2" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BreakAway.dbo.vPaymentsforPeriod' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vPaymentsforPeriod">
+          <Key>
+            <PropertyRef Name="ReservationDate" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="StartDate" />
+            <PropertyRef Name="EndDate" />
+            <PropertyRef Name="LocationName" />
+          </Key>
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="ReservationDate" Type="datetime" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BreakAway.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ActivityEquipment_Activities">
+          <End Role="Activities" Type="Self.Activities" Multiplicity="1" />
+          <End Role="ActivityEquipment" Type="Self.ActivityEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="ActivityEquipment">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityEquipment_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="ActivityEquipment" Type="Self.ActivityEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="ActivityEquipment">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Activities">
+          <End Role="Activities" Type="Self.Activities" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="PrimaryActivity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Activities1">
+          <End Role="Activities" Type="Self.Activities" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="SecondaryActivity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerTypes">
+          <End Role="CustomerTypes" Type="Self.CustomerTypes" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTypes">
+              <PropertyRef Name="CustomerTypeID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CustomerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Locations">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="PrimaryDesintation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Locations1">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="SecondaryDestination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventActivities_Activities">
+          <End Role="Activities" Type="Self.Activities" Multiplicity="1" />
+          <End Role="EventActivities" Type="Self.EventActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="EventActivities">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventActivities_Events">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="EventActivities" Type="Self.EventActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="EventActivities">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Locations">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Lodging">
+          <End Role="Lodging" Type="Self.Lodging" Multiplicity="1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lodging">
+              <PropertyRef Name="LodgingID" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="LodgingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lodging_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Lodging" Type="Self.Lodging" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Lodging">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lodging_Locations">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="Lodging" Type="Self.Lodging" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Lodging">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Reservations">
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservations">
+              <PropertyRef Name="ReservationID" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="ReservationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservations_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservations_Events">
+          <End Role="Events" Type="Self.Events" Multiplicity="0..1" />
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ActivitiesonaTrip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tripID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ContactsAddedinDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startdate" Type="datetime" Mode="In" />
+          <Parameter Name="enddate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CreateCustomerfromContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="contactID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CustomersWhoTravelledinDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startdate" Type="datetime" Mode="In" />
+          <Parameter Name="enddate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="DeleteContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+          <Parameter Name="CustomerTypeID" Type="int" Mode="In" />
+          <Parameter Name="PrimaryDest" Type="int" Mode="In" />
+          <Parameter Name="SecondaryDest" Type="int" Mode="In" />
+          <Parameter Name="PrimaryAct" Type="int" Mode="In" />
+          <Parameter Name="SecondaryAct" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeletePayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PaymentID" Type="int" Mode="In" />
+          <Parameter Name="rowversion" Type="timestamp" Mode="In" />
+        </Function>
+        <Function Name="EventLocationsInDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startdate" Type="datetime" Mode="In" />
+          <Parameter Name="enddate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="InsertContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nchar" Mode="In" />
+          <Parameter Name="LastName" Type="nchar" Mode="In" />
+          <Parameter Name="Title" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="InsertCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+          <Parameter Name="CustomerTypeID" Type="int" Mode="In" />
+          <Parameter Name="PrimaryDest" Type="int" Mode="In" />
+          <Parameter Name="SecondaryDest" Type="int" Mode="In" />
+          <Parameter Name="PrimaryAct" Type="int" Mode="In" />
+          <Parameter Name="SecondaryAct" Type="int" Mode="In" />
+          <Parameter Name="Notes" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="InsertPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="reservationID" Type="int" Mode="In" />
+          <Parameter Name="amount" Type="money" Mode="In" />
+        </Function>
+        <Function Name="PaymentsforPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="endDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="TripLocationsInDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startdate" Type="datetime" Mode="In" />
+          <Parameter Name="enddate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="TripSalesforDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startdate" Type="datetime" Mode="In" />
+          <Parameter Name="enddate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ufnKGtoLB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="Kilogram" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ufnLBtoKG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="Pounds" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="nchar" Mode="In" />
+          <Parameter Name="LastName" Type="nchar" Mode="In" />
+          <Parameter Name="Title" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+          <Parameter Name="CustomerTypeID" Type="int" Mode="In" />
+          <Parameter Name="PrimaryDest" Type="int" Mode="In" />
+          <Parameter Name="SecondaryDest" Type="int" Mode="In" />
+          <Parameter Name="PrimaryAct" Type="int" Mode="In" />
+          <Parameter Name="SecondaryAct" Type="int" Mode="In" />
+          <Parameter Name="Notes" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateCustomerWithMappings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+          <Parameter Name="CustomerTypeID" Type="int" Mode="In" />
+          <Parameter Name="InitialDate" Type="datetime" Mode="In" />
+          <Parameter Name="PrimaryDesintation" Type="int" Mode="In" />
+          <Parameter Name="SecondaryDestination" Type="int" Mode="In" />
+          <Parameter Name="PrimaryActivity" Type="int" Mode="In" />
+          <Parameter Name="SecondaryActivity" Type="int" Mode="In" />
+          <Parameter Name="Notes" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddDate" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+          <Parameter Name="BirthDate" Type="datetime" Mode="In" />
+          <Parameter Name="HeightInches" Type="int" Mode="In" />
+          <Parameter Name="WeightPounds" Type="int" Mode="In" />
+          <Parameter Name="DietaryRestrictions" Type="varchar" Mode="In" />
+          <Parameter Name="CustTimeStamp" Type="timestamp" Mode="In" />
+          <Parameter Name="ContactTimeStamp" Type="timestamp" Mode="In" />
+        </Function>
+        <Function Name="UpdatePayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PaymentID" Type="int" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="reservationID" Type="int" Mode="In" />
+          <Parameter Name="amount" Type="money" Mode="In" />
+          <Parameter Name="modifiedDate" Type="datetime" Mode="In" />
+          <Parameter Name="rowversion" Type="timestamp" Mode="In" />
+        </Function>
+        <EntityContainer Name="BreakAwayModelStoreContainer">
+          <EntitySet Name="Activities" EntityType="Self.Activities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityEquipment" EntityType="Self.ActivityEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactPersonalInfo" EntityType="Self.ContactPersonalInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerTypes" EntityType="Self.CustomerTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventActivities" EntityType="Self.EventActivities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lodging" EntityType="Self.Lodging" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OldReservations" EntityType="Self.OldReservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomersinPastYear" EntityType="Self.CustomersinPastYear" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomersinPastYear].[COntactID] AS [COntactID], 
+    [CustomersinPastYear].[PrimaryDesintation] AS [PrimaryDesintation], 
+    [CustomersinPastYear].[CustomerTypeID] AS [CustomerTypeID], 
+    [CustomersinPastYear].[InitialDate] AS [InitialDate], 
+    [CustomersinPastYear].[SecondaryDestination] AS [SecondaryDestination], 
+    [CustomersinPastYear].[PrimaryActivity] AS [PrimaryActivity], 
+    [CustomersinPastYear].[SecondaryActivity] AS [SecondaryActivity], 
+    [CustomersinPastYear].[Notes] AS [Notes], 
+    [CustomersinPastYear].[FirstName] AS [FirstName], 
+    [CustomersinPastYear].[LastName] AS [LastName], 
+    [CustomersinPastYear].[Title] AS [Title], 
+    [CustomersinPastYear].[AddDate] AS [AddDate], 
+    [CustomersinPastYear].[ModifiedDate] AS [ModifiedDate]
+    FROM [dbo].[CustomersinPastYear] AS [CustomersinPastYear]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vOfficeAddresses" EntityType="Self.vOfficeAddresses" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vOfficeAddresses].[FirstName] AS [FirstName], 
+    [vOfficeAddresses].[LastName] AS [LastName], 
+    [vOfficeAddresses].[addressID] AS [addressID], 
+    [vOfficeAddresses].[Street1] AS [Street1], 
+    [vOfficeAddresses].[Street2] AS [Street2], 
+    [vOfficeAddresses].[City] AS [City], 
+    [vOfficeAddresses].[StateProvince] AS [StateProvince], 
+    [vOfficeAddresses].[CountryRegion] AS [CountryRegion], 
+    [vOfficeAddresses].[PostalCode] AS [PostalCode], 
+    [vOfficeAddresses].[AddressType] AS [AddressType], 
+    [vOfficeAddresses].[ContactID] AS [ContactID], 
+    [vOfficeAddresses].[ModifiedDate] AS [ModifiedDate]
+    FROM [dbo].[vOfficeAddresses] AS [vOfficeAddresses]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vPaymentsforPeriod" EntityType="Self.vPaymentsforPeriod" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vPaymentsforPeriod].[PaymentDate] AS [PaymentDate], 
+    [vPaymentsforPeriod].[Amount] AS [Amount], 
+    [vPaymentsforPeriod].[ReservationDate] AS [ReservationDate], 
+    [vPaymentsforPeriod].[FirstName] AS [FirstName], 
+    [vPaymentsforPeriod].[LastName] AS [LastName], 
+    [vPaymentsforPeriod].[StartDate] AS [StartDate], 
+    [vPaymentsforPeriod].[EndDate] AS [EndDate], 
+    [vPaymentsforPeriod].[LocationName] AS [LocationName]
+    FROM [dbo].[vPaymentsforPeriod] AS [vPaymentsforPeriod]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ActivityEquipment_Activities" Association="Self.FK_ActivityEquipment_Activities">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="ActivityEquipment" EntitySet="ActivityEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityEquipment_Equipment" Association="Self.FK_ActivityEquipment_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="ActivityEquipment" EntitySet="ActivityEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Contact" Association="Self.FK_Address_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Activities" Association="Self.FK_Customers_Activities">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Activities1" Association="Self.FK_Customers_Activities1">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Contact" Association="Self.FK_Customers_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerTypes" Association="Self.FK_Customers_CustomerTypes">
+            <End Role="CustomerTypes" EntitySet="CustomerTypes" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Locations" Association="Self.FK_Customers_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Locations1" Association="Self.FK_Customers_Locations1">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventActivities_Activities" Association="Self.FK_EventActivities_Activities">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="EventActivities" EntitySet="EventActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventActivities_Events" Association="Self.FK_EventActivities_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="EventActivities" EntitySet="EventActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Locations" Association="Self.FK_Events_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Lodging" Association="Self.FK_Events_Lodging">
+            <End Role="Lodging" EntitySet="Lodging" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lodging_Contact" Association="Self.FK_Lodging_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Lodging" EntitySet="Lodging" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lodging_Locations" Association="Self.FK_Lodging_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Lodging" EntitySet="Lodging" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Reservations" Association="Self.FK_Payments_Reservations">
+            <End Role="Reservations" EntitySet="Reservations" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservations_Customers" Association="Self.FK_Reservations_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservations_Events" Association="Self.FK_Reservations_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BreakAwayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ActivityID" />
+          </Key>
+          <Property Name="ActivityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Activity1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="imagepath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Activities" FromRole="Activities" ToRole="Customers" />
+          <NavigationProperty Name="Customers1" Relationship="Self.FK_Customers_Activities1" FromRole="Activities" ToRole="Customers" />
+          <NavigationProperty Name="Equipments" Relationship="Self.ActivityEquipment" FromRole="Activities" ToRole="Equipment" />
+          <NavigationProperty Name="Events" Relationship="Self.EventActivities" FromRole="Activities" ToRole="Events" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="addressID" />
+          </Key>
+          <Property Name="addressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Address_Contact" FromRole="Address" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_Contact" FromRole="Contact" ToRole="Address" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customers_Contact" FromRole="Contact" ToRole="Customers" />
+          <NavigationProperty Name="Lodgings" Relationship="Self.FK_Lodging_Contact" FromRole="Contact" ToRole="Lodging" />
+        </EntityType>
+        <EntityType Name="ContactPersonalInfo">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="HeightInches" Type="Int32" />
+          <Property Name="WeightPounds" Type="Int32" />
+          <Property Name="DietaryRestrictions" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerTypeID" Type="Int32" Nullable="false" />
+          <Property Name="InitialDate" Type="DateTime" Precision="3" />
+          <Property Name="PrimaryDesintation" Type="Int32" />
+          <Property Name="SecondaryDestination" Type="Int32" />
+          <Property Name="PrimaryActivity" Type="Int32" />
+          <Property Name="SecondaryActivity" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_Customers_Activities" FromRole="Customers" ToRole="Activities" />
+          <NavigationProperty Name="Activity1" Relationship="Self.FK_Customers_Activities1" FromRole="Customers" ToRole="Activities" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Customers_Contact" FromRole="Customers" ToRole="Contact" />
+          <NavigationProperty Name="CustomerType" Relationship="Self.FK_Customers_CustomerTypes" FromRole="Customers" ToRole="CustomerTypes" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Customers_Locations" FromRole="Customers" ToRole="Locations" />
+          <NavigationProperty Name="Location1" Relationship="Self.FK_Customers_Locations1" FromRole="Customers" ToRole="Locations" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservations_Customers" FromRole="Customers" ToRole="Reservations" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="CustomerTypeID" />
+          </Key>
+          <Property Name="CustomerTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerTypes" FromRole="CustomerTypes" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Equipment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Activities" Relationship="Self.ActivityEquipment" FromRole="Equipment" ToRole="Activities" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="LodgingID" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TripCostUSD" Type="Int32" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Events_Locations" FromRole="Events" ToRole="Locations" />
+          <NavigationProperty Name="Lodging" Relationship="Self.FK_Events_Lodging" FromRole="Events" ToRole="Lodging" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservations_Events" FromRole="Events" ToRole="Reservations" />
+          <NavigationProperty Name="Activities" Relationship="Self.EventActivities" FromRole="Events" ToRole="Activities" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Locations" FromRole="Locations" ToRole="Customers" />
+          <NavigationProperty Name="Customers1" Relationship="Self.FK_Customers_Locations1" FromRole="Locations" ToRole="Customers" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Events_Locations" FromRole="Locations" ToRole="Events" />
+          <NavigationProperty Name="Lodgings" Relationship="Self.FK_Lodging_Locations" FromRole="Locations" ToRole="Lodging" />
+        </EntityType>
+        <EntityType Name="Lodging">
+          <Key>
+            <PropertyRef Name="LodgingID" />
+          </Key>
+          <Property Name="LodgingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LodgingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="Resort" Type="Boolean" Nullable="false" />
+          <Property Name="ResortChainOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LuxuryResort" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Lodging_Contact" FromRole="Lodging" ToRole="Contact" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Events_Lodging" FromRole="Lodging" ToRole="Events" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Lodging_Locations" FromRole="Lodging" ToRole="Locations" />
+        </EntityType>
+        <EntityType Name="OldReservation">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="ReservationID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK_Payments_Reservations" FromRole="Payments" ToRole="Reservations" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Reservations_Customers" FromRole="Reservations" ToRole="Customers" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Reservations_Events" FromRole="Reservations" ToRole="Events" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payments_Reservations" FromRole="Reservations" ToRole="Payments" />
+        </EntityType>
+        <EntityType Name="CustomersinPastYear">
+          <Key>
+            <PropertyRef Name="COntactID" />
+            <PropertyRef Name="CustomerTypeID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="AddDate" />
+            <PropertyRef Name="ModifiedDate" />
+          </Key>
+          <Property Name="COntactID" Type="Int32" Nullable="false" />
+          <Property Name="PrimaryDesintation" Type="Int32" />
+          <Property Name="CustomerTypeID" Type="Int32" Nullable="false" />
+          <Property Name="InitialDate" Type="DateTime" Precision="3" />
+          <Property Name="SecondaryDestination" Type="Int32" />
+          <Property Name="PrimaryActivity" Type="Int32" />
+          <Property Name="SecondaryActivity" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vOfficeAddress">
+          <Key>
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="addressID" />
+            <PropertyRef Name="AddressType" />
+            <PropertyRef Name="ContactID" />
+            <PropertyRef Name="ModifiedDate" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="addressID" Type="Int32" Nullable="false" />
+          <Property Name="Street1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vPaymentsforPeriod">
+          <Key>
+            <PropertyRef Name="ReservationDate" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="StartDate" />
+            <PropertyRef Name="EndDate" />
+            <PropertyRef Name="LocationName" />
+          </Key>
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Customers_Activities">
+          <End Role="Activities" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="PrimaryActivity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Activities1">
+          <End Role="Activities" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="SecondaryActivity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lodging_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Lodging" Type="Self.Lodging" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Lodging">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerTypes">
+          <End Role="CustomerTypes" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTypes">
+              <PropertyRef Name="CustomerTypeID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CustomerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Locations">
+          <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="PrimaryDesintation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Locations1">
+          <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="SecondaryDestination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservations_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Reservations" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Locations">
+          <End Role="Locations" Type="Self.Location" Multiplicity="1" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Lodging">
+          <End Role="Lodging" Type="Self.Lodging" Multiplicity="1" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lodging">
+              <PropertyRef Name="LodgingID" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="LodgingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservations_Events">
+          <End Role="Events" Type="Self.Event" Multiplicity="0..1" />
+          <End Role="Reservations" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lodging_Locations">
+          <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Lodging" Type="Self.Lodging" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Lodging">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Reservations">
+          <End Role="Reservations" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="Payments" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservations">
+              <PropertyRef Name="ReservationID" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="ReservationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActivityEquipment">
+          <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+        </Association>
+        <Association Name="EventActivities">
+          <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BreakAwayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activities" EntityType="Self.Activity" />
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="ContactPersonalInfoes" EntityType="Self.ContactPersonalInfo" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerTypes" EntityType="Self.CustomerType" />
+          <EntitySet Name="Equipments" EntityType="Self.Equipment" />
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Lodgings" EntityType="Self.Lodging" />
+          <EntitySet Name="OldReservations" EntityType="Self.OldReservation" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="CustomersinPastYears" EntityType="Self.CustomersinPastYear" />
+          <EntitySet Name="vOfficeAddresses" EntityType="Self.vOfficeAddress" />
+          <EntitySet Name="vPaymentsforPeriods" EntityType="Self.vPaymentsforPeriod" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="FK_Customers_Activities" Association="Self.FK_Customers_Activities">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Activities1" Association="Self.FK_Customers_Activities1">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Contact" Association="Self.FK_Address_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Contact" Association="Self.FK_Customers_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lodging_Contact" Association="Self.FK_Lodging_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Lodging" EntitySet="Lodgings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerTypes" Association="Self.FK_Customers_CustomerTypes">
+            <End Role="CustomerTypes" EntitySet="CustomerTypes" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Locations" Association="Self.FK_Customers_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Locations1" Association="Self.FK_Customers_Locations1">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservations_Customers" Association="Self.FK_Reservations_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Locations" Association="Self.FK_Events_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Lodging" Association="Self.FK_Events_Lodging">
+            <End Role="Lodging" EntitySet="Lodgings" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservations_Events" Association="Self.FK_Reservations_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lodging_Locations" Association="Self.FK_Lodging_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Lodging" EntitySet="Lodgings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Reservations" Association="Self.FK_Payments_Reservations">
+            <End Role="Reservations" EntitySet="Reservations" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="ActivityEquipment" Association="Self.ActivityEquipment">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Equipment" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="EventActivities" Association="Self.EventActivities">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <FunctionImport Name="ActivitiesonaTrip" ReturnType="Collection(BreakAwayModel.ActivitiesonaTrip_Result)">
+            <Parameter Name="tripID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ContactsAddedinDateRange" ReturnType="Collection(BreakAwayModel.ContactsAddedinDateRange_Result)">
+            <Parameter Name="startdate" Mode="In" Type="DateTime" />
+            <Parameter Name="enddate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CreateCustomerfromContact" ReturnType="Collection(BreakAwayModel.CreateCustomerfromContact_Result)">
+            <Parameter Name="contactID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CustomersWhoTravelledinDateRange" ReturnType="Collection(BreakAwayModel.CustomersWhoTravelledinDateRange_Result)">
+            <Parameter Name="startdate" Mode="In" Type="DateTime" />
+            <Parameter Name="enddate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteContact">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteCustomer">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+            <Parameter Name="CustomerTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="PrimaryDest" Mode="In" Type="Int32" />
+            <Parameter Name="SecondaryDest" Mode="In" Type="Int32" />
+            <Parameter Name="PrimaryAct" Mode="In" Type="Int32" />
+            <Parameter Name="SecondaryAct" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeletePayment">
+            <Parameter Name="PaymentID" Mode="In" Type="Int32" />
+            <Parameter Name="rowversion" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="EventLocationsInDateRange" ReturnType="Collection(BreakAwayModel.EventLocationsInDateRange_Result)">
+            <Parameter Name="startdate" Mode="In" Type="DateTime" />
+            <Parameter Name="enddate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="InsertContact" ReturnType="Collection(Decimal)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertCustomer">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+            <Parameter Name="CustomerTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="PrimaryDest" Mode="In" Type="Int32" />
+            <Parameter Name="SecondaryDest" Mode="In" Type="Int32" />
+            <Parameter Name="PrimaryAct" Mode="In" Type="Int32" />
+            <Parameter Name="SecondaryAct" Mode="In" Type="Int32" />
+            <Parameter Name="Notes" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertPayment" ReturnType="Collection(Decimal)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="reservationID" Mode="In" Type="Int32" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PaymentsforPeriod" ReturnType="Collection(BreakAwayModel.PaymentsforPeriod_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="TripLocationsInDateRange" ReturnType="Collection(BreakAwayModel.TripLocationsInDateRange_Result)">
+            <Parameter Name="startdate" Mode="In" Type="DateTime" />
+            <Parameter Name="enddate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="TripSalesforDateRange" ReturnType="Collection(Int32)">
+            <Parameter Name="startdate" Mode="In" Type="DateTime" />
+            <Parameter Name="enddate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateContact" ReturnType="Collection(Binary)">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateCustomer">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+            <Parameter Name="CustomerTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="PrimaryDest" Mode="In" Type="Int32" />
+            <Parameter Name="SecondaryDest" Mode="In" Type="Int32" />
+            <Parameter Name="PrimaryAct" Mode="In" Type="Int32" />
+            <Parameter Name="SecondaryAct" Mode="In" Type="Int32" />
+            <Parameter Name="Notes" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateCustomerWithMappings" ReturnType="Collection(BreakAwayModel.UpdateCustomerWithMappings_Result)">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+            <Parameter Name="CustomerTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="InitialDate" Mode="In" Type="DateTime" />
+            <Parameter Name="PrimaryDesintation" Mode="In" Type="Int32" />
+            <Parameter Name="SecondaryDestination" Mode="In" Type="Int32" />
+            <Parameter Name="PrimaryActivity" Mode="In" Type="Int32" />
+            <Parameter Name="SecondaryActivity" Mode="In" Type="Int32" />
+            <Parameter Name="Notes" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="AddDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="BirthDate" Mode="In" Type="DateTime" />
+            <Parameter Name="HeightInches" Mode="In" Type="Int32" />
+            <Parameter Name="WeightPounds" Mode="In" Type="Int32" />
+            <Parameter Name="DietaryRestrictions" Mode="In" Type="String" />
+            <Parameter Name="CustTimeStamp" Mode="In" Type="Binary" />
+            <Parameter Name="ContactTimeStamp" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePayment" ReturnType="Collection(Binary)">
+            <Parameter Name="PaymentID" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="reservationID" Mode="In" Type="Int32" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+            <Parameter Name="modifiedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="rowversion" Mode="In" Type="Binary" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ActivitiesonaTrip_Result">
+          <Property Type="Int32" Name="ActivityID" Nullable="false" />
+          <Property Type="String" Name="Activity" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="imagepath" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ContactsAddedinDateRange_Result">
+          <Property Type="Int32" Name="ContactID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="AddDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+          <Property Type="Binary" Name="RowVersion" Nullable="false" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="CreateCustomerfromContact_Result">
+          <Property Type="Int32" Name="ContactID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerTypeID" Nullable="false" />
+          <Property Type="DateTime" Name="InitialDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="PrimaryDesintation" Nullable="true" />
+          <Property Type="Int32" Name="SecondaryDestination" Nullable="true" />
+          <Property Type="Int32" Name="PrimaryActivity" Nullable="true" />
+          <Property Type="Int32" Name="SecondaryActivity" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" />
+          <Property Type="Binary" Name="RowVersion" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="AddDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="HeightInches" Nullable="true" />
+          <Property Type="Int32" Name="WeightPounds" Nullable="true" />
+          <Property Type="String" Name="DietaryRestrictions" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="CustomersWhoTravelledinDateRange_Result">
+          <Property Type="Int32" Name="ContactID" Nullable="false" />
+          <Property Type="Int32" Name="PrimaryDesintation" Nullable="true" />
+          <Property Type="Int32" Name="CustomerTypeID" Nullable="false" />
+          <Property Type="DateTime" Name="InitialDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="SecondaryDestination" Nullable="true" />
+          <Property Type="Int32" Name="PrimaryActivity" Nullable="true" />
+          <Property Type="Int32" Name="SecondaryActivity" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="AddDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="HeightInches" Nullable="true" />
+          <Property Type="Int32" Name="WeightPounds" Nullable="true" />
+          <Property Type="String" Name="DietaryRestrictions" Nullable="true" MaxLength="250" />
+          <Property Type="Binary" Name="RowVersion" Nullable="false" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="EventLocationsInDateRange_Result">
+          <Property Type="Int32" Name="LocationID" Nullable="false" />
+          <Property Type="String" Name="LocationName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PaymentsforPeriod_Result">
+          <Property Type="DateTime" Name="PaymentDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="ReservationDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="LocationName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="TripLocationsInDateRange_Result">
+          <Property Type="Int32" Name="LocationID" Nullable="false" />
+          <Property Type="String" Name="LocationName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="UpdateCustomerWithMappings_Result">
+          <Property Type="Binary" Name="CustRowVersion" Nullable="false" MaxLength="8" />
+          <Property Type="Binary" Name="ContRowVersion" Nullable="false" MaxLength="8" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BreakAwayModelStoreContainer" CdmEntityContainer="BreakAwayEntities">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="BreakAwayModel.Activity">
+              <MappingFragment StoreEntitySet="Activities">
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="Activity1" ColumnName="Activity" />
+                <ScalarProperty Name="imagepath" ColumnName="imagepath" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="BreakAwayModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="addressID" ColumnName="addressID" />
+                <ScalarProperty Name="Street1" ColumnName="Street1" />
+                <ScalarProperty Name="Street2" ColumnName="Street2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+                <ScalarProperty Name="CountryRegion" ColumnName="CountryRegion" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="BreakAwayModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactPersonalInfoes">
+            <EntityTypeMapping TypeName="BreakAwayModel.ContactPersonalInfo">
+              <MappingFragment StoreEntitySet="ContactPersonalInfo">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="HeightInches" ColumnName="HeightInches" />
+                <ScalarProperty Name="WeightPounds" ColumnName="WeightPounds" />
+                <ScalarProperty Name="DietaryRestrictions" ColumnName="DietaryRestrictions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="BreakAwayModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+                <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
+                <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
+                <ScalarProperty Name="SecondaryDestination" ColumnName="SecondaryDestination" />
+                <ScalarProperty Name="PrimaryActivity" ColumnName="PrimaryActivity" />
+                <ScalarProperty Name="SecondaryActivity" ColumnName="SecondaryActivity" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTypes">
+            <EntityTypeMapping TypeName="BreakAwayModel.CustomerType">
+              <MappingFragment StoreEntitySet="CustomerTypes">
+                <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+                <ScalarProperty Name="CustomerType1" ColumnName="CustomerType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipments">
+            <EntityTypeMapping TypeName="BreakAwayModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="Equipment1" ColumnName="Equipment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="BreakAwayModel.Event">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LodgingID" ColumnName="LodgingID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TripCostUSD" ColumnName="TripCostUSD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="BreakAwayModel.Location">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lodgings">
+            <EntityTypeMapping TypeName="BreakAwayModel.Lodging">
+              <MappingFragment StoreEntitySet="Lodging">
+                <ScalarProperty Name="LodgingID" ColumnName="LodgingID" />
+                <ScalarProperty Name="LodgingName" ColumnName="LodgingName" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="Resort" ColumnName="Resort" />
+                <ScalarProperty Name="ResortChainOwner" ColumnName="ResortChainOwner" />
+                <ScalarProperty Name="LuxuryResort" ColumnName="LuxuryResort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OldReservations">
+            <EntityTypeMapping TypeName="BreakAwayModel.OldReservation">
+              <MappingFragment StoreEntitySet="OldReservations">
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="BreakAwayModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="BreakAwayModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservations">
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomersinPastYears">
+            <EntityTypeMapping TypeName="BreakAwayModel.CustomersinPastYear">
+              <MappingFragment StoreEntitySet="CustomersinPastYear">
+                <ScalarProperty Name="COntactID" ColumnName="COntactID" />
+                <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
+                <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+                <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
+                <ScalarProperty Name="SecondaryDestination" ColumnName="SecondaryDestination" />
+                <ScalarProperty Name="PrimaryActivity" ColumnName="PrimaryActivity" />
+                <ScalarProperty Name="SecondaryActivity" ColumnName="SecondaryActivity" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vOfficeAddresses">
+            <EntityTypeMapping TypeName="BreakAwayModel.vOfficeAddress">
+              <MappingFragment StoreEntitySet="vOfficeAddresses">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="addressID" ColumnName="addressID" />
+                <ScalarProperty Name="Street1" ColumnName="Street1" />
+                <ScalarProperty Name="Street2" ColumnName="Street2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+                <ScalarProperty Name="CountryRegion" ColumnName="CountryRegion" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vPaymentsforPeriods">
+            <EntityTypeMapping TypeName="BreakAwayModel.vPaymentsforPeriod">
+              <MappingFragment StoreEntitySet="vPaymentsforPeriod">
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="BreakAwayModel.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ActivityEquipment" TypeName="BreakAwayModel.ActivityEquipment" StoreEntitySet="ActivityEquipment">
+            <EndProperty Name="Activities">
+              <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+            </EndProperty>
+            <EndProperty Name="Equipment">
+              <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="EventActivities" TypeName="BreakAwayModel.EventActivities" StoreEntitySet="EventActivities">
+            <EndProperty Name="Activities">
+              <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+            </EndProperty>
+            <EndProperty Name="Events">
+              <ScalarProperty Name="EventID" ColumnName="EventID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="ActivitiesonaTrip" FunctionName="BreakAwayModel.Store.ActivitiesonaTrip">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreakAwayModel.ActivitiesonaTrip_Result">
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="imagepath" ColumnName="imagepath" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ContactsAddedinDateRange" FunctionName="BreakAwayModel.Store.ContactsAddedinDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreakAwayModel.ContactsAddedinDateRange_Result">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreateCustomerfromContact" FunctionName="BreakAwayModel.Store.CreateCustomerfromContact">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreakAwayModel.CreateCustomerfromContact_Result">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+                <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
+                <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
+                <ScalarProperty Name="SecondaryDestination" ColumnName="SecondaryDestination" />
+                <ScalarProperty Name="PrimaryActivity" ColumnName="PrimaryActivity" />
+                <ScalarProperty Name="SecondaryActivity" ColumnName="SecondaryActivity" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="HeightInches" ColumnName="HeightInches" />
+                <ScalarProperty Name="WeightPounds" ColumnName="WeightPounds" />
+                <ScalarProperty Name="DietaryRestrictions" ColumnName="DietaryRestrictions" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CustomersWhoTravelledinDateRange" FunctionName="BreakAwayModel.Store.CustomersWhoTravelledinDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreakAwayModel.CustomersWhoTravelledinDateRange_Result">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
+                <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+                <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
+                <ScalarProperty Name="SecondaryDestination" ColumnName="SecondaryDestination" />
+                <ScalarProperty Name="PrimaryActivity" ColumnName="PrimaryActivity" />
+                <ScalarProperty Name="SecondaryActivity" ColumnName="SecondaryActivity" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="HeightInches" ColumnName="HeightInches" />
+                <ScalarProperty Name="WeightPounds" ColumnName="WeightPounds" />
+                <ScalarProperty Name="DietaryRestrictions" ColumnName="DietaryRestrictions" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteContact" FunctionName="BreakAwayModel.Store.DeleteContact" />
+          <FunctionImportMapping FunctionImportName="DeleteCustomer" FunctionName="BreakAwayModel.Store.DeleteCustomer" />
+          <FunctionImportMapping FunctionImportName="DeletePayment" FunctionName="BreakAwayModel.Store.DeletePayment" />
+          <FunctionImportMapping FunctionImportName="EventLocationsInDateRange" FunctionName="BreakAwayModel.Store.EventLocationsInDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreakAwayModel.EventLocationsInDateRange_Result">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertContact" FunctionName="BreakAwayModel.Store.InsertContact" />
+          <FunctionImportMapping FunctionImportName="InsertCustomer" FunctionName="BreakAwayModel.Store.InsertCustomer" />
+          <FunctionImportMapping FunctionImportName="InsertPayment" FunctionName="BreakAwayModel.Store.InsertPayment" />
+          <FunctionImportMapping FunctionImportName="PaymentsforPeriod" FunctionName="BreakAwayModel.Store.PaymentsforPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreakAwayModel.PaymentsforPeriod_Result">
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TripLocationsInDateRange" FunctionName="BreakAwayModel.Store.TripLocationsInDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreakAwayModel.TripLocationsInDateRange_Result">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TripSalesforDateRange" FunctionName="BreakAwayModel.Store.TripSalesforDateRange" />
+          <FunctionImportMapping FunctionImportName="UpdateContact" FunctionName="BreakAwayModel.Store.UpdateContact" />
+          <FunctionImportMapping FunctionImportName="UpdateCustomer" FunctionName="BreakAwayModel.Store.UpdateCustomer" />
+          <FunctionImportMapping FunctionImportName="UpdateCustomerWithMappings" FunctionName="BreakAwayModel.Store.UpdateCustomerWithMappings">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreakAwayModel.UpdateCustomerWithMappings_Result">
+                <ScalarProperty Name="CustRowVersion" ColumnName="CustRowVersion" />
+                <ScalarProperty Name="ContRowVersion" ColumnName="ContRowVersion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdatePayment" FunctionName="BreakAwayModel.Store.UpdatePayment" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="CopyToOutputDirectory" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

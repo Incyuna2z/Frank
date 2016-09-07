@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e2e2ab57c7e4b71805b3bab10995a98" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="BreakAwayModel.Activity" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.Address" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.Contact" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.ContactPersonalInfo" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.Customer" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.CustomerType" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.Equipment" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.Event" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.Location" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.Lodging" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.OldReservation" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.Payment" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.Reservation" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.CustomersinPastYear" Width="1.5" PointX="5.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.vOfficeAddress" Width="1.5" PointX="7.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.vPaymentsforPeriod" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreakAwayModel.database_firewall_rules" Width="1.5" PointX="9.75" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="BreakAwayModel.FK_Customers_Activities" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Customers_Activities1" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Address_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Customers_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Lodging_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Customers_CustomerTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Customers_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Customers_Locations1" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Reservations_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Events_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Events_Lodging" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Reservations_Events" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Lodging_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.FK_Payments_Reservations" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.ActivityEquipment" ManuallyRouted="false" />
+        <AssociationConnector Association="BreakAwayModel.EventActivities" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
