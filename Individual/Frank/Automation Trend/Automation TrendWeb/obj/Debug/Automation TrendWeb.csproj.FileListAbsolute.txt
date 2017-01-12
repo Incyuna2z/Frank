@@ -1,0 +1,17 @@
+c:\users\lenovo\documents\visual studio 2013\Projects\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.dll.config
+c:\users\lenovo\documents\visual studio 2013\Projects\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.dll
+c:\users\lenovo\documents\visual studio 2013\Projects\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.pdb
+c:\users\lenovo\documents\visual studio 2013\Projects\Automation Trend\Automation TrendWeb\obj\Debug\Automation TrendWeb.dll
+c:\users\lenovo\documents\visual studio 2013\Projects\Automation Trend\Automation TrendWeb\obj\Debug\Automation TrendWeb.pdb
+c:\users\lenovo\documents\visual studio 2013\Projects\Automation Trend\Automation TrendWeb\obj\Debug\Automation TrendWeb.csprojResolveAssemblyReference.cache
+D:\Repos\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.dll.config
+D:\Repos\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.dll
+D:\Repos\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.pdb
+D:\Repos\Automation Trend\Automation TrendWeb\obj\Debug\Automation TrendWeb.dll
+D:\Repos\Automation Trend\Automation TrendWeb\obj\Debug\Automation TrendWeb.pdb
+D:\Repos\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.dll.config
+D:\Repos\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.dll
+D:\Repos\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\Automation Trend\Automation TrendWeb\bin\Automation TrendWeb.pdb
+D:\Repos\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\Automation Trend\Automation TrendWeb\obj\Debug\Automation TrendWeb.dll
+D:\Repos\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\Automation Trend\Automation TrendWeb\obj\Debug\Automation TrendWeb.pdb
+D:\Repos\BeyondsoftDevDivAppBuild\Office and SharePoint CTI Team\Frank\Automation Trend\Automation TrendWeb\obj\Debug\Automation TrendWeb.csprojResolveAssemblyReference.cache
